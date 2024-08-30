@@ -33,6 +33,10 @@ void Widget::on_connectButton_clicked()
     // 连接服务器成功, socket对象会发出信号
     connect(socket, &QTcpSocket::connected, [this]() {
         QMessageBox::information(this, "连接提示", "连接服务器成功");
+
+        this->hide(); // 隐藏当前界面hide/close
+        Chat *c = new Chat(socket); // 堆空间创建对象不能在栈孔吉纳创建
+        c->show();
     });
 
     // 连接断开, socket也会发出信号
