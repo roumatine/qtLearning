@@ -5,6 +5,8 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <qfile.h>
+#include <QKeyEvent>
+#include <QMouseEvent>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -19,11 +21,14 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void keyPressEvent(QKeyEvent *k);
+    void mousePressEvent(QMouseEvent *m);
 
 private slots:
     void newActionSlot();
     void openActionSlot();
     void saveActionSlot();
+
 private:
     Ui::MainWindow *ui;
 };
